@@ -1,3 +1,3 @@
 # Research
 
-This repository will contain research relavent to Emergent Dynamic's interests.
+This repository will contain research relevant to Emergent Dynamic's interests.
