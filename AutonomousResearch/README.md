@@ -12,7 +12,9 @@ This folder contains research related to the use of autonomous agents in experim
 
 ### Authors
 Connor W. Coley (B.S., Caltech; Ph.D., MIT; currently Assistant Professor of Chemical Engineering at MIT) http://cwcoley.com/
+
 Natalie S. Eyke (B.S., University of Michigan; working on Ph.D. at MIT) http://greengroup.mit.edu/natalie-eyke
+
 Klavs F. Jensen (Professor, Chemical Engineering, MIT) https://jensenlab.mit.edu/
 
 > “We should embrace the divergence of human versus machine tasks.”
