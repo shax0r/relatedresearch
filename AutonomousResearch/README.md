@@ -11,11 +11,11 @@ This folder contains research related to the use of autonomous agents in experim
 [Autonomous Discovery Part II](Coley_2019_PartII.pdf)
 
 ### Authors
-Connor W. Coley (B.S., Caltech; Ph.D., MIT; currently Assistant Professor of Chemical Engineering at MIT) http://cwcoley.com/
+[Connor W. Coley](http://cwcoley.com/) (B.S., Caltech; Ph.D., MIT; currently Assistant Professor of Chemical Engineering at MIT)
 
-Natalie S. Eyke (B.S., University of Michigan; working on Ph.D. at MIT) http://greengroup.mit.edu/natalie-eyke
+[Natalie S. Eyke](http://greengroup.mit.edu/natalie-eyke) (B.S., University of Michigan; working on Ph.D. at MIT)
 
-Klavs F. Jensen (Professor, Chemical Engineering, MIT) https://jensenlab.mit.edu/
+[Klavs F. Jensen](https://jensenlab.mit.edu/) (Professor, Chemical Engineering, MIT)
 
 > “We should embrace the divergence of human versus machine tasks.”
  
