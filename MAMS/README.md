@@ -28,3 +28,32 @@
 •	The alignment of MAMS deployment with industry best practice allows developers to leverage on a wide range of industry-standard tools and components available to microservices-based systems.
 •	The implementation strategy and concrete agent technologies are well defined in the demonstrated MAMS structure. 
 •	The demonstrated MAMS framework is made consistent, through re-engineering of the ASTRA compiler, with the Continuous Integration/Continuous Delivery model, which characterizes microservices-based approaches
+
+
+
+### Pump, et al.
+
+- [Applying Microservice Principles to Simulation Tools](Pump_2019.pdf)
+
+- Authors: Richard Pump, [Arne Koschel](https://www.hs-hannover.de/service/personenfinder/person/1000003410/), [Volker Ahlers](http://www.volkerahlers.de/)
+
+Microservices are a type of software development in which applications are arranged as loosely coupled services which are fine-grained with lightweight protocols.  The advantages of microservices include working well at scale, and rapid development of new components.  However, microservices often entails creating an entirely new architecture and replacing an old system with a piecemeal re-implementation. As a result, pure microservices architectures are not feasible in every project.  Instead, in this study, microservice principles were used to prototype architecture for the connection of two widely-used simulation tools in the context of urban transport simulation (MATSim and AnyLogic).  The proposed system uses microservice principles to combine the two tools into a single tool supporting civil engineer decision-making on innovative urban transport concepts.  This approach improved the usability of complex software and allowed developers to develop parts of the software independently, in conformation to the project's organizational structure which was geographically located in different places.
+
+   - **Challenges of microservices and, specifically, this approach:** 
+   
+      - Microsimulations rely on monolithic simulation frameworks, and modeling only small parts of the scenario still requires a rich framework to provide the extensive functionalities needed.
+      
+      - One of the challenges in microservices is that rebuilding systems to adhere to microservices architecture can be very time consuming and likely costly.  The approach outlined in this study modeled only small parts of the scenario with microservices principles, and did not rebuild the scenario in a full microservices architecture, which made it possible to use fewer resources. 
+
+      -  Another challenge was that this study featured multiple teams building the system in different physical locations, so independence was a paramount factor.  Existing applications were split up within the boundaries of the project, which was made easier due to the microservices approach which emphasizes modularity.
+
+      - Complexity of simulations adds difficulty.  The approach outlined in this paper only works for simulations which are not very complex; very complex simulations can usually not be written by a small team in a reasonable time frame.
+  
+
+  - **Advantages of microservices and this specific approach:** 
+      - This approach combined two simulation frameworks to create a unified front end, which made the software more usable.
+      - Usage of microsimulations allows rapid technical development of new simulations, reducing
+overall development time.
+      -	Simulation accuracy is increased -- by reducing the time needed for technical development, more time can be dedicated to detailed research and data gathering about real-life behavior and structure.
+      -	Keeping simulation scenarios small can help reduce the number of people needed to implement software, which can be a big advantage in cases where the software is to be used as a tool in a given project.  If the concepts modeled are kept to a small number and parameters are used for configuration scenarios, the amount of code needed is actually minimal.
+      -	This framework may be potentially used in the cloud, which is the subject of future work by this research group.
