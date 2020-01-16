@@ -29,30 +29,87 @@ Deep Reinforcement Learning
 	
   The proposed deep reinforcement learning approach: Lenient Multi-Agent Deep Reinforcement Learning would be novel in solving highly coordinated problems in large tournament stochastic games, stock market predictions, betting odds, manufacturing robotics processes, and human robot cooperation. 
 
-##**Value-Decomposition Networks For Cooperative Multi-Agent Learning Based On Team Reward**(...Sunehag et al-2018.pdf)
-______
-##**Authors**
+
+
+
+
+==================
+
+## Value-Decomposition Networks For Cooperative Multi-Agent Learning Based On Team Reward
+======
+
+
+## 2018
+---
+
+
+### Sunehag, et al.,
+
+
+
+[Value-Decomposition Networks For Cooperative Multi-Agent Learning Based On Team Reward](Sunehag et al-2018.pdf)
+        
+	
+   **Authors**
+
+
 Peter Sunehag-DeepMind sunehag@google.com
+
+
 Guy Lever-DeepMind guylever@google.com
+
+
 Audrunas Gruslys-DeepMindaudrunas@google.com 
-Wojciech Marian Czarnecki-DeepMindlejlot@google.com 
+
+
+Wojciech Marian Czarnecki-DeepMindlejlot@google.com
+
+
 Vinicius Zambaldi-DeepMind vzambaldi@google.com
+
+
 Max Jaderberg-DeepMind jaderberg@google.com
+
+
 Marc Lanctot-DeepMind lanctot@google.com 
+
+
 Nicolas Sonnerat-DeepMind sonnerat@google.com
+
+
 Joel Z. Leibo-DeepMind jzl@google.com
+
+
 Karl Tuyls-DeepMind & University of Liverpool karltuyls@google.com
+
+
 Thore Graepel-DeepMind thore@google.com
 
-...[Sunehag] (https://www.apollo.io/people/Peter/Sunehag/54a72ddd7468696de7ca961c?__cf_chl_jschl_tk__=c7844ab9b70c68c97b044638180f6412c241e597-1578940904-0-AcOVavnLn7aANoLktdu1R7xqaEt0v2pxdvLJDlIqTLMvtAcZ7lg5OmIF0qPpjextfYXqSA7xBDrSI0RXJjbKTWJm6jTuiTC7Twt5kjuZfE2vsSDB5s2rGZWSgQGvYqFTS_u_EypFYtkclvJYQU8hnLcd_QHRKJXDk2OLtLZ__WMuNoHjYltwMUyCnGwcr2RpEaxwsXcg-HVrvBzfKys-wRTrXD6J6_cSEH4QTlGdSj2hQ5F7bIyujGIpC8SyOv0qcpPzRE9iWQmtvPuHxfMfnNf_3fzxxbDqfDpOgUtZO7EdqWoZssxNYLWNC4oWZJJxM7UyV9a5ItzkaM1D3Ogo-s2Unb-wdiFYt40XEFFOmXXIzscnsNjd_K6eSasylx9Imw), et al.,in their article, propose and evaluate an intriguing deep reinforced learning approach called ‘learned additive value-decomposition’ approach, specifically enhanced for complex cooperative multi-agent problems. The authors build an additional layer: learned additive value-decomposition layer to the standard [Deep Q-Network] (https://pythonprogramming.net/deep-q-learning-dqn-reinforcement-learning-python-tutorial/)architecture, for example, having three standard layers including the low-level layer, the recurrent layer, and the dueling layer that feeds individual agent Q-values to the value decomposition layer. The value-decomposition layer sums individual agent Q-value to get a total Q gradient. 
 
-###**Major Breakthrough/Why the Approach is Superior**
-...The learned additive value-decomposition approach is unique and superior because it converges to an optimal joint policy by learning optimal linear value-decomposition from a team reward signal, which is accomplished by back-propagating the total Q gradient via deep neural networks representing individual component value functions. By so doing, the value-decomposition framework allows continuous centralized learning of agents where agents learn concurrently at training time, t, and can be deployed independently because the implicit value functions learned by each agent are only based on the agent’s local observations. That means that using the total Q gradient to establish/learn an optimal linear value-decomposition function across a number of agents yielding a target reward, t; individual agents can learn their individual decomposed optimal linear value functions and converge at an individual optimal policy/action independently, based on their local observation-action spaces.  After testing this approach against fully centralized framework, fully independent learners framework as well as a two-agent framework where individual agents learn directly from the joint reward signal, the value-decomposition framework outperformed the rest by large margins. The approach avoids sub-optimal policy convergence by interference by spurious rewards as well as time-wasting by idle agents in a centralized system where learning is neither concurrent nor independent.
+   [Sunehag](https://www.apollo.io/people/Peter/Sunehag/54a72ddd7468696de7ca961c?__cf_chl_jschl_tk__=c7844ab9b70c68c97b044638180f6412c241e597-1578940904-0-AcOVavnLn7aANoLktdu1R7xqaEt0v2pxdvLJDlIqTLMvtAcZ7lg5OmIF0qPpjextfYXqSA7xBDrSI0RXJjbKTWJm6jTuiTC7Twt5kjuZfE2vsSDB5s2rGZWSgQGvYqFTS_u_EypFYtkclvJYQU8hnLcd_QHRKJXDk2OLtLZ__WMuNoHjYltwMUyCnGwcr2RpEaxwsXcg-HVrvBzfKys-wRTrXD6J6_cSEH4QTlGdSj2hQ5F7bIyujGIpC8SyOv0qcpPzRE9iWQmtvPuHxfMfnNf_3fzxxbDqfDpOgUtZO7EdqWoZssxNYLWNC4oWZJJxM7UyV9a5ItzkaM1D3Ogo-s2Unb-wdiFYt40XEFFOmXXIzscnsNjd_K6eSasylx9Imw), et al.,in their article, propose and evaluate an intriguing deep reinforced learning approach called ‘learned additive value-decomposition’ approach, specifically enhanced for complex cooperative multi-agent problems. The authors build an additional layer: learned additive value-decomposition layer to the standard [Deep Q-Network](https://pythonprogramming.net/deep-q-learning-dqn-reinforcement-learning-python-tutorial/)architecture, for example, having three standard layers including the low-level layer, the recurrent layer, and the dueling layer that feeds individual agent Q-values to the value decomposition layer. The value-decomposition layer sums individual agent Q-value to get a total Q gradient. 
+   
+   
+  
+
+  **Major Breakthrough/Why the Approach is Superior**
+  
+  
+     The learned additive value-decomposition approach is unique and superior because it converges to an optimal joint policy by learning optimal linear value-decomposition from a team reward signal, which is accomplished by back-propagating the total Q gradient via deep neural networks representing individual component value functions. By so doing, the value-decomposition framework allows continuous centralized learning of agents where agents learn concurrently at training time, t, and can be deployed independently because the implicit value functions learned by each agent are only based on the agent’s local observations. That means that using the total Q gradient to establish/learn an optimal linear value-decomposition function across a number of agents yielding a target reward, t; individual agents can learn their individual decomposed optimal linear value functions and converge at an individual optimal policy/action independently, based on their local observation-action spaces.  After testing this approach against fully centralized framework, fully independent learners framework as well as a two-agent framework where individual agents learn directly from the joint reward signal, the value-decomposition framework outperformed the rest by large margins. The approach avoids sub-optimal policy convergence by interference by spurious rewards as well as time-wasting by idle agents in a centralized system where learning is neither concurrent nor independent.
+     
+     
 >Implicitly, the value-decomposition network aims to learn an optimal linear value-decomposition from the team reward signal, by back-propagating the total Q gradient through deep neural networks representing the individual component value functions.
 
-###**Assumption**
-...The learned additive value-decomposition approach leverages on the assumption that the joint action-value function for the system can additively be decomposed into value functions across agents. 
+
+              **Assumption**
+
+
+     The learned additive value-decomposition approach leverages on the assumption that the joint action-value function for the system can additively be decomposed into value functions across agents. 
+     
+     
 >The main assumption we make and exploit is that the joint action-value function for the system can be additively decomposed into value functions across agents.
 
-###**Application**
-...As highlighted by the authors, the proposed deep RL approach will be effective in solving complex cooperative multi-agent problems in busy intersection traffic transportation systems, complex multi-operational manufacturing processes, complex stochastic games, complex autonomous driving systems, and general robotics for MAS. 
+
+  **Application**
+
+
+As highlighted by the authors, the proposed deep RL approach will be effective in solving complex cooperative multi-agent problems in busy intersection traffic transportation systems, complex multi-operational manufacturing processes, complex stochastic games, complex autonomous driving systems, and general robotics for MAS. 
