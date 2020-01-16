@@ -47,7 +47,7 @@ Deep Reinforcement Learning
 
 
 
-[Value-Decomposition Networks For Cooperative Multi-Agent Learning Based On Team Reward](Sunehag et al-2018.pdf)
+[Value-Decomposition Networks For Cooperative Multi-Agent Learning Based On Team Reward](2018_Sunehag.pdf)
         
 	
    **Authors**
