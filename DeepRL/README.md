@@ -113,3 +113,92 @@ Thore Graepel-DeepMind thore@google.com
 
 
   As highlighted by the authors, the proposed deep RL approach will be effective in solving complex cooperative multi-agent problems in busy intersection traffic transportation systems, complex multi-operational manufacturing processes, complex stochastic games, complex autonomous driving systems, and general robotics for MAS. 
+  
+  
+  
+  
+  
+-------------------------------------------------------
+
+
+## Primal-Dual Algorithm for Distributed Reinforcement Learning: Distributed GTD
+
+
+******************
+
+
+### Lee, Yoon, and Hovakimyan,
+
+
+
+### 2018,
+
+
+### [Primal-Dual Algorithm for Distributed Reinforcement Learning: Distributed GTD](Lee, Yoon, and Hovakimyan-2018.pdf)
+
+
+
+
+
+**Learning Scheme Overview**
+
+
+[Lee](https://www.apollo.io/people/Donghwan/Lee/5dcdce8185a5d000012061ca?__cf_chl_jschl_tk__=a229ba5cd92c164b536a7dfb63a277aac209f17f-1579379950-0-AWhYgKRpo_9z2z4LhKOLRQQAcpbXz33QALApNkWO9LPHVCYyzrEexOYTlAGi2l7NdXkEgH1rGYWWGkCOTUtrF7DCpTkfihs59GKQRf1bFFOTD4IX0g07ocktAw5byMJCFGsBM_XBLv8OvpWmXwREabQnXMwEHmlys5d1eWwi48Kn7ERa44DPQ-QUQnQz47b8UwfUrNGGQliYvK3rCP1VaXNWU3E4C8EvBG2tiSJQFVAiVkVrD6Oa0Eywmk7_yAAehKfsHAyYVgyo58yUM0wYbFHsFifEnI_uFIfpazQlVvn_wDc2v3iBnOOfEtuq88bjRzKUcQm3U0c_Z9O7n0jOtFgRY_gHgYXTRtg2kXGi4G3DY35_xLkhVRwGov-uIsySpA), [Yoon](http://naira.mechse.illinois.edu/sciencex_teams/hyung-jin-yoon/), and [Hovakimyan](http://naira.mechse.illinois.edu/sciencex_teams/naira-hovakimyan/) present an improved overview of a distributed version of the gradient temporal-difference (GTD) learning algorithm for multi-agent Markov decision processes. It is an intriguing proposal that needs further validation because it aims at learning a global infinite horizon discounted cost function or the global value function for fixed policies without the model knowledge (statistics of the state transitions and rewards). The algorithm, which is a primal-dual distributed GTD algorithm, works by converting case problems into constrained convex optimization with consensus constraints. In that case, the problem is viewed as a constrained optimization and is therefore solved using a primal-dual saddle point algorithm.
+
+
+**Inputs and Outputs**
+
+
+1.	**Inputs**
+
+
+      -fixed policy and a Markov Decision Process Quadruple (infinite state space, infinite action space, a tensor representing an unknown state transition probability matrix, a reward function, and discounting factor)
+
+
+2. **Output**
+
+
+-Infinite horizon discounted value
+
+
+With all the parameters characterizing linear function approximation including infinite state space, infinite action space, a tensor representing an unknown state transition probability matrix, a reward function, and discounting factor; the infinite-horizon discounted value function with a defined fixed stochastic policy ‘pie’ can be calculated from pre-selected basis functions by minimizing the mean square projects Bellman error loss function.  That means that for each agent to learn an approximate value of the global reward ( an averaged summation of individual agent’s local rewards) without the knowledge of their transition models, a solution to the projected Bellman equation has to be found using [consensus optimization]( https://www.cvxpy.org/examples/applications/consensus_opt.html). The authors  add ‘consensus box constraints’ to the unique solution of the projected [Bellman equation]( https://en.wikipedia.org/wiki/Bellman_equation), which is represented as stationary points of the [Ordinary Differential Equaltion (ODE)]( https://en.wikipedia.org/wiki/Ordinary_differential_equation) to establish a stochastic approximation algorithm that takes advantage of the ODE properties. The constraints are added to guarantee the stability and convergence of the proposed algorithm.  In that case, it is assumed that each agent’s learning parameter is exchanged via a communication network defining associate relations among agents. With a fixed focus on the value evaluation problem with fixed local policies, the authors can prove; using ODE-based methods that the proposed algorithm partially converges to a set of stationary points of the optimization problem in distributed multi-agent Markov decision process cases with sampled observations and fixed policies.
+
+**Why the Learning Scheme is Novel**
+
+
++ One main advantage of the proposed scheme is its off-policy learning proponents; without the knowledge of individual agent’s transition model.
+
+
++Learning tasks and consensus are unified into a single ODE, thus, simplifying convergence validation using ODE-based methods; as proved  by the authors validation analysis. Unlike previously proposed algorithms, it incorporates consensus tasks into equality constraints.
+
+
++The algorithm is a stochastic primal-dual method for solving saddle point problems, which allows application of optimization analysis tools for improving convergence speed as well as the complexity of the algorithm.
+
+
++The proposed learning scheme can be extended directly in cases with stochastic communication networks. 
+
+**Assumptions/What to look out for**
+
+
+.The proposed algorithm lacks theoretical guarantee that it improves previously proposed consensus-based algorithms.
+
+
+.The proposed approach assumes that every agent in a distributed multi-agent fixed-policy setting can observe the entire combination of global joint state-actions and local rewards.
+
+
+.The learning scheme assumes that each agent’s learning parameter is exchanged via a communication network defining associate relations among agents.
+
+.Optimal convergence of the proposed scheme depends on if the added constraints are sufficiently large and satisfy the authors set assumption for the constraint sets
+
+
+> The constraint sets satisfy ¯_∗ ∈ C¯_, ¯v∗ ∈ C¯v, ¯ w∗ ∈ C¯ w, and C¯μ ∩ F 6= ∅.
+
+
+
+**Application**
+
+
+The proposed RL scheme is applicable in distributed multi-agent saddle point problems with fixed policies and an unknown transition models e.g in Stock market value projections and sales projections in departmentalized business organizations with different product lines.
+
+
+
