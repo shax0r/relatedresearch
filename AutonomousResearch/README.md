@@ -101,3 +101,183 @@ Computer assistance and automation have become ubiquitous in accelerating scient
 At the current moment, it remains unclear to what extent the computer is doing the discovery or simply serving as a tool to accelerate human discovery.  The human developer’s role is still significant -- to formulate the discovery problem, an effective representation, and transform the output into meaningful scientific results.  The paper touts the promise of computer-aided or autonomous discovery while discussing the many remaining challenges in this field.  Public and private sector efforts have significant investments in this type of discovery and the field is poised to be part of a larger revolution in automation of scientific discovery.
 
 This work relates to Emergent.Bio as the company seeks to predict markers by querying markers rather than behaviors.  An empirical computer engine could run experiments and simulations (based on public information available from drug discovery databases, for example) and crunch the numbers to yield novel insights and advance the field.  This work could occur in conjunction with research labs (e.g., with Professors Coley or Jensen, who are authors on this article and also MIT Chemical Engineering professors) to speed up drug discovery and help accelerate drug discovery. 
+
+
+
+
+
+
+---------------------------------------
+
+# Unsupervised Word Embeddings Capture Latent Knowledge from Materials Science Literature
+
+-----------------------------------
+
+
+
+### Tshitoyan, et al.,
+
+
+### 2019,
+
+
+### Authors 
+
+
+[Vahe Tshitoyan]( https://www.mathworks.com/matlabcentral/profile/authors/4173395-vahe-tshitoyan)
+
+
+
+[John Dagdelen](https://chemistrycommunity.nature.com/users/64392-john-dagdelen)
+
+
+
+[Leigh Weston]( http://www.physics.usyd.edu.au/cmt/home.php?x=leigh)
+
+
+
+
+[Alexander Dunn]( https://cheme.stanford.edu/people/alexander-dunn)
+
+
+
+
+[Ziqin Rong](https://publons.com/researcher/2090364/ziqin-rong/)
+
+
+
+
+
+[Olga Kononova]( http://faculty.uml.edu/vbarsegov/people/kononova/kononova.html)
+
+
+
+[Kristin A. Persson]( https://mse.berkeley.edu/people_new/persson/)
+
+[Gerbrand Ceder]( https://dmse.mit.edu/people/gerbrand-ceder)
+
+
+
+[Anubhav Jain]( https://eta.lbl.gov/people/anubhav-jain)
+
+[Unsupervised Word Embeddings Capture Latent Knowledge from Materials Science Literature](AutonomousResearch/Tshitoyan, et al-2019, Unsupervised word Embeddings.pdf)
+
+
+
+Retrieving scientific information from today’s vast amount of scientific publications is becoming difficult if not cumbersome as the number of publications continue to grow. Unlike previous studies that have demonstrated the retrieval of information from scientific literature using supervised [natural language processing]( https://en.wikipedia.org/wiki/Natural_language_processing), [Tshitoyan]( https://www.mathworks.com/matlabcentral/profile/authors/4173395-vahe-tshitoyan) et al., in their article, prove how materials science knowledge in published literature can efficiently be encoded as *information-dense word embeddings* without human supervision or cumbersome labeling. The authors use previously reported unsupervised natural language processing (**NLP**) models/algorithms (Word2Vec and GloVe) to train word embeddings in materials science with the aim of proving the efficiency of the models in capturing key knowledge. Particularly, **NLP** models like Word2Vec’s [Skip-gram Variation]( https://en.wikipedia.org/wiki/Word2vec) use information about the co-occurrences of words in a text corpus to create word embeddings (vector representations of words).  The authors created a text corpus by collecting and processing about 3.3 million scientific abstracts from over 1000 journal published between 1922 and 2018. In particular, the authors used skip-gram variation of [Word2vec]( https://en.wikipedia.org/wiki/Word2vec) to learn the *200-dimesional embedding* of the target word (*thermoelectric*) to their 500, 000 words text corpus. The Word2vec model expresses and solve analogies by finding the cosine distance of similarity between embeddings through *addition* and subtraction vector operations. In addition, the model uses the [dot product]( https://mathinsight.org/dot_product) (projection vector operation) to find/predict similar words/compounds. 
+
+
+
+> To better visualize such embedded relationships, we projected the embeddings of Zr, Cr and Ni, as well as their corresponding oxides and crystal structures, onto two dimensions using principal component analysis.
+
+
+
+**Inputs**
+
+
+-Text corpus (scientific abstracts, which resulted in approximately 500, 000 key words)
+
+
+
+-**NLP** model/algorithm (Word2vec, GloVe, ELMo, BERT e.t.c.)
+
+
+
+**Output**
+
+
+200-dimensional embedding of the target word (e.g., thermoelectric, photovoltaics, topological insulator, ferroelectric, e.t.c. )
+
+
+
+**Breakthroughs and Validations**
+
+
++ The authors observed that the created embeddings supported domain-specific analogies of the target word. Specifically, the authors were able to validate previous findings regarding Word2vec by establishing that the accuracies in representing information in three categories: functional application, crystal symmetries as well as chemical composition were close to 50%, as reported in the previous [Word2vec study]( https://arxiv.org/abs/1310.4546). 
+
+
++ The authors established that the embeddings of chemical elements were representative of their positions in the periodic table when projected onto two dimensions. That means that the embeddings could serve as effective feature vectors in quantitative machine learning models like formation energy prediction, thus, outperforming several previously reported curated feature vectors.
+
+
+>We stress that Word2vec treats these entities simply as strings, and no chemical interpretation is explicitly provided to the model; rather, materials knowledge is captured through the positions of the words in scientific abstracts.
+
+
++ The main advantage of the demonstrated representation is that application keywords such as ‘thermoelectric’ had the same representation as material formulae such as ‘Bi2Te3’.
+
+
++ The authors found that a number of materials that had relatively high cosine similarities to the word ‘thermoelectric’ never occurred explicitly in the same abstract with the target word: ‘thermoelectric’, or any other word that unequivocally identify materials as thermoelectric. As a result, the authors were prompted to investigate if such instances could be usefully interpreted as predictions of primer thermoelectric materials.
+
+
++ The authors identified compounds mentioned their text corpus (abstracts) more than three times that were also present in the computational datasets reporting the thermoelectric power factors of approximately 48,000 compounds calculated using [density functional theory (DFT)]( https://en.wikipedia.org/wiki/Density_functional_theory). 
+
+
++ From the 48, 000 compounds,  9,483 compounds were found to overlap between the two datasets, of which 7,663 never occurred alongside thermoelectric keywords the sampled text corpus, which mean they could be considered candidates for prediction. The authors ranked each of the 7,663 compounds by the dot product of their normalized output embedding with the word embedding of ‘thermoelectric.’
+
+
+> This ranking can be interpreted as the likelihood that that material will co-occur with the word ‘thermoelectric’ in a scientific abstract despite this never occurring explicitly in the text corpus.
+
+
++ After plotting the distributions of DFT maximum power factors values for all the overlapping compounds; 9,483 compounds, the authors found that the top ten predictions all exhibit computed power factors significantly greater than the average of candidate materials, and even slightly higher than the average of known thermoelectric materials. 
+
+
++ One notable novelty about the created embeddings is that the embeddings were based only on the text corpus and were not modified or trained in any manner using the DFT data.
+
+
++ After comparing relative ranking of candidates using Spearman rank correlation for 83 materials that appear both in the sampled text corpus and the experimental set, the authors obtained a 52% and 59% rank correlation of experimental results with the embedding-based ranking for maximum zT  and maximum power factor, respectively. The research model outperformed DFT dataset of power factors, which exhibited only a 31% rank correlation with the experimental maximum power factors.
+
+
++ The authors used historical dataset to test whether their model—if trained at various instances in the past—would have correctly predicted thermoelectric materials reported later in the literature. Results indicated that materials from top 50 word embedding-based predictions were on average eight times more probable to have been studied as thermoelectrics within the next 5 years compared to a randomly selected unstudied material from sample corpus at that time, and also three times more probable than a random materials with non-zero DFT bandgap.
+
+
+
+> The use of larger corpora that incorporate data from more recent years improved the rate of successful predictions, as indicated by the steeper gradients for later years.
+
+
++ After investigating a series of connections that could lead to predictions of materials never mentioned next to the key word; thermoelectric, the authors found that the correlations between key words led to predictions. The authors note that multiple predictions exhibited promising properties despite not being in any well-known thermoelectric material categories, thus, demonstrating that word embeddings go beyond trivial structural or compositional similarities and have the potential to present explicit knowledge not directly accessible to human scientists.
+
+
+> This direct interpretability is a major advantage over many other machine learning methods for materials discovery.
+
+
++ Finally, the authors investigated the generalizability of their research model using different target words, besides ‘themoelectric’ and found similar results.
+
+
+
+**Assumptions/What to look out for**
+
+
+
+> The success of our unsupervised approach can partly be attributed to the choice of the training corpus.
+
+
+The above statement means that the quality and domain-specificity of sampled corpus determines the utility of embeddings for domain-specific tasks.
+
+
+
+The research model assumes that words with similar meanings often appear in similar contexts, which follows that their corresponding embeddings will also be similar.
+
+
+Some of the model’s predicted compounds, in materials science might have toxic elements, which calls for discretion while embracing or validating machine-assisted scientific breakthroughs. 
+
+
+
+**Future Research Direction**
+
+
+The methodology described in the article can be generalized to other language models, such that the probability of a material or molecule co-occurring with words that represent a property or a target application can be treated as indicators of performance. As a result, such language-based inference methods can become new direction for research at the intersection between science and natural language processing. 
+
+
+Future research should sample full texts as sample text corpus to test representation of more negative relationships and in general more complex sentences and variables that will require more powerful methods.
+
+
+Future research should substitute Word2vec with powerful context-aware embeddings such as ELMo or BERT25, which could lead to improvements for functional material predictions. 
+.
+
+
+**Application**
+
+
+The presented work is a novel contribution towards developing and validating accurate NLP models that can be applied in the automatic exploration of hypothesis spaces (Automated Research).
+
+
+> …this work will pave the way towards making the vast amount of information found in scientific literature accessible to individuals in ways that enable a new paradigm of machine-assisted scientific breakthroughs.
