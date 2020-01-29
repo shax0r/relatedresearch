@@ -1,6 +1,42 @@
 
 ---
+## 2019
+---
 
+## Distributed Multi-Agent Reinforcement Learning by Actor-Critic Method
+
+### Paulo C. Heredia and Shaoshuai Mou
+
+
+- [Paulo Heredia](https://www.cerias.purdue.edu/site/people/students/view/1918) - B.S. from MIT, studying PhD at Purdue University in Shaoshuai Mou's Lab
+
+- [Shaoshuai Mou](https://engineering.purdue.edu/AIMS) - Professor, Purdue University and Director, Autonomous & Intelligent Multi-agent Systems (AIMS) Lab
+
+=====
+
+
+[Distributed Multi-Agent Reinforcement Learning by Actor-Critic Method](Heredia2019.pdf)
+
+#### The Challenge
+Multi-agent reinforcement learning or MARL has been subject to much attention due to its applications in a variety of fields such as mobile sensor networks, robotics, drone swarms, cybersecurity, and more.  The primary research challenges in MARL stem from the fact that each agent has its own local and private reward, and can only coordinate with nearby agents, which usually result in conflicts with other agents in credit assignment and coordinating actions.
+
+This challenge has led to the rapid emergence of a new area of research -- the development of distributed algorithms for MARL in which there is no centralized coordination, and instead, local coordination among nearby neighbors are allowed.  Recently, researchers have also started to develop distributed MARL based on actor-critic methods in single-agent cases.
+
+The problem in MARL is that each agent only can access a local reward, and can communicate with its nearby neighbors.  The solution to this problem that is championed by the authors of this paper is a distributed algorithm that uses the actor-critic method to enable all agents to cooperatively learn a control policy that maximizes the global objective function.  In this paper, the authors also describe simulations that serve to validate the proposed algorithm.
+
+#### The Approach
+
+This paper outlines a distributed algorithm for MARL which is based on the actor-critic methods.  In this framework, each agent is tasked with the development of an actor to generate a control input, given the state, and a critic to output a scalar value for the performance of the current policy, given a state and input pair.  The study adds to the body of knowledge in this realm by considering the expected sum of discounted rewards over an infinite time horizon.  This work extends previous findings by Wai et al. (2018) to help apply that research to both action-value functions and state-value functions, which suggests that such policy evaluation algorithm can potentially be used in an actor-critic framework.
+
+For the case in which a network of many autonomous agents operate in an unknown environment or plant, the system can be described as a function of the state of the plant and the control inputs.  The goal of MARL in this paper is to achieve a globally optimal control policy to maximize the objective function.  The objective function is assumed to be a sum of discounted rewards, when a stochastic control policy is applied to the plant.
+
+The paper's distributed algorithm for MARL introduces an actor and critic at each agent -- in other words, each agent trains an actor to generate a control input given the state (control policy), and a critic to output a scalar value for the performance of the current control policy.  The paper presents mathematical formulas which underlie the critic and actor training in this model.
+
+#### Results
+
+The main results of the paper relate to what the proposed algorithm can achieve under 9 assumptions outlined in the paper (please see pages 3-4).  The paper's novel actor-critic algorithm allows agents to use information from their neighbors in order to improve policies so that the globally averaged reward is maximized.
+
+---
 
 ## 2018
 ---
