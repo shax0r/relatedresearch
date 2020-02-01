@@ -202,3 +202,161 @@ The proposed RL scheme is applicable in distributed multi-agent saddle point pro
 
 
 
+
+
+
+
+
+_________________________________________
+
+# Putting An End to End-to-End: Gradient-Isolated Learning of Representations
+
+----------------------------------------
+
+
+
+
+**Authors**
+
+
+
+[Sindy Löwe](https://loewex.github.io/)
+
+
+
+
+[Peter O’Connor]( https://scholar.google.co.uk/citations?user=oVnU6OsAAAAJ&hl=en)
+
+
+
+[Bastiaan S. Veeling](https://scholar.google.com/citations?user=qStzdQsAAAAJ&hl=fr)
+
+
+
+
+### 2019,
+
+
+
+[Putting An End to End-to-End: Gradient-Isolated Learning of Representations](Lowe, O’Connor, and Veeling_2019.pdf)
+
+
+
+**Approach Overview**
+
+
+
+Minimizing the error or loss in learning processes is vital in all deep learning schemes. [Lowe]( https://loewex.github.io/), [O’Connor]( https://scholar.google.co.uk/citations?user=oVnU6OsAAAAJ&hl=en), and [Veeling]( https://scholar.google.com/citations?user=qStzdQsAAAAJ&hl=fr) develop and test an improved deep learning scheme in which agents/modules reduce noise by greedily confining learning locally to modules and blocking the transfer of gradients from module to module; as observed in the biological neural networks. The authors develop a novel, module-local, self-supervised learning using the brain analogy theorizing that the human brain learns to process perceptions by optimally preserving information of input activities in each layer. Primarily using the brain analogy and the [Greedy InfoMax principle]( https://www.groundai.com/project/greedy-infomax-for-biologically-plausible-self-supervised-representation-learning/1), the authors come up with the Greedy InfoMax (GIM) approach. In their approach, the authors restructure the conventional deep neural network by dividing it into stacked, gradient-isolated modules and develop a learning scheme that works by optimizing, in isolation, mutual information between representations of temporally nearby module-patches at each layer. With the *feature module* at the top of the stack, the proposed gradient-isolated learning of representations only works best for downstream tasks like object identification and voice recognition. Unlike [Contrastive Predictive Coding]( https://arxiv.org/pdf/1807.03748.pdf) and greedy supervised learning approaches, which uses labeled datasets and end-to-end backpropagation of global error signals, the proposed module-local, self-supervised greedy InfoMax approach enforces learning of unlabeled data using module-local [InfoNCE loss]( https://arxiv.org/pdf/1807.03748.pdf). Specifically, the InfoNCE loss function is what optimizes mutual information between the input and output of each module in a deep neural network stack. The proposed Greedy InfoMax model has a deep encoding model in every module and an optional autoregressive model in the final module/feature module. The deep encoding model obtains a pair of encodings (*positive sample* and *negative sample* drawn uniformly from all available encoded input sequences) by extracting mutual information between representations of temporally nearby patches, then optimizing the mutual information using [Noise Contrastive Estimation (NCE)]( http://proceedings.mlr.press/v9/gutmann10a/gutmann10a.pdf). Optimization of the encoded pairs in each module occurs as a log-bilinear function (scoring model) with unique weight-matrix for every k-steps-ahead prediction; which leads to the [InfoNCE loss]( https://arxiv.org/pdf/1807.03748.pdf). Optimization extracts features consistent over neighboring patches with the scoring function learning to use the features to correctly classify the matching pair.
+
+
+
+> In practice, the loss is trained using stochastic gradient descent with mini-batches drawn from a large dataset of sequences, and negative samples drawn uniformly from all sequences in the mini-batch. Note, that no min-max issues arise as found in adversarial training.
+
+
+Each encoding module maps the output from previous module to ‘GradientBlock’ to prevent gradient from being transferred from module to module. The ‘GradientBlock’ is also mapped to the autoregressive model that ensures context-aggregate representations at the feature module, without gradient flow from previous modules. 
+
+
+**Inputs**
+
+
+	* Input signal
+
+
+
+	* Encoded sample pairs (positive and negative from all available encoded input sequences)
+
+
+
+
+	* Optimized output from previous modules (for module M+1)
+
+
+
+**Output**
+
+
+	* Optimized encoded pairs
+
+
+
+
+	* Classified features from the downstream linear classifier
+
+
+
+**Assumption**
+
+
+It is theorized that *slow features* in downstream tasks like speech recognition and object detection is vital in ensuring effectiveness in the maximization of mutual information between representations of neighboring patches. The Greedy InfoMax learning model assumes that natural datasets exhibit *slow features*. 
+
+
+
+**Breakthroughs and Validations**
+
+
+
+1. Unlike Contrastive Predictive Coding and greedy supervised learning approaches, which use labeled datasets and end-to-end backpropagation of global error signals, the proposed GIM approach mitigates against various disadvantages related to [end-to-end backpropagation] and labeled data sets like vanishing gradients by optimizing inputs as well as predicted outputs of each module using module-local InfoNCE loss, and unlabeled data sets respectively. 
+
+
+
+2. The proposed Greedy InfoMax algorithm enforces memory-efficient asynchronous distributed training.
+
+
+> enables asynchronous, decoupled training of neural networks, allowing for training arbitrarily deep networks on larger-than-memory input data. 
+
+
+
+
+3. The proposed learning approach utilizes greedy self-supervised training, which makes the model less vulnerable to overfitting.
+
+> achieves strong performance on audio and image classification tasks despite greedy self-supervised training.
+
+
+
+
+4. The authors: 
+
+
+
+>show that mutual information maximization is especially suited for layer-by-layer greedy optimization, and argue that this reduces the problem of vanishing gradients.
+
+
+
+
+5. In an experiment that compared GIM’s linear classifier accuracy score of its final (frozen module) feature representations against Contrastive Predictive Coding and other supervised, end-to-end training approaches, the authors found that the *Greedy InfoMax* approach outperformed *Randomly initialized* and *MFCC features*,  *Supervised*, and *Greedy Supervised* approaches in the speaker classification accuracy. 
+
+
+**What to Note**
+
+
+The autoregressive module aggregates inputs over multiple patches and utilizes [BPTT (Backpropagation Through Time)]( https://en.wikipedia.org/wiki/Backpropagation_through_time) to enable context-aggregated representations. The authors carry out an ablation study to establish the difference in their GIM linear classification accuracies when the autoregressive model is excluded and when BPTT is excluded. The authors note a small decrease in accuracies when the BPTT is excluded and a further decrease when the autoregressive module is excluded entirely; both in speaker and phone classification. 
+
+
+
+**Direction for Future Research**
+
+
+There was a slight disparity in the reported Contrastive Predictive Coding linear classifier accuracy, compared to previously reported accuracy by [Oord, et al.]( https://arxiv.org/pdf/1807.03748.pdf). That calls for more experiments to be conducted with the aim of further validating the proposed GIM’s accuracy against CPC and other supervised, end-to-end backpropagation approaches. 
+
+
+
+**Application**
+
+
+The proposed self-supervised gradient-isolated learning approach is most applicable perceptual and downstream tasks like high-dimension speech recognition as well as high-dimension object detection/classification tasks. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
