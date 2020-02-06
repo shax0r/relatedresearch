@@ -99,3 +99,77 @@ Since the PD-DistIAG method utilizes a gradient estimator tracking gradient over
 
 The proposed RL scheme is highly applicable in multi-agent convex-concave optimization case scenarios where agents are coupled by state transition matrix; in large scale application like power grids, sensor networks and swarm robotics. 
 
+---
+
+
+## Fully Decentralized Multi-Agent Reinforcement Learning with Networked Agents
+
+### Zhang, et al., 2018b
+
+- [Kaiqing Zhang](https://ece.illinois.edu/directory/profile/kzhang66) - Fellow and Graduate Student, Department of Electrical and Computer Engineering & Coordinated Science Laboratory, University of Illinois Urbana-Champaign (UIUC)
+- [Zhuoran Yang](http://www.princeton.edu/~zy6/) - Ph.D. Candidate, Department of Operations Research and Financial Engineering, Princeton University
+- [Han Liu](http://magics.cs.northwestern.edu/index.html) - Associate Professor of Computer Science & Statistics, Northwestern University, & Tencent AI Lab
+- [Tong Zhang](http://tongzhang-ml.org/) - Professor of Computer Science and Mathematics at Hong Kong University of Science and Technology (affiliated with Tencent AI Lab in this publication)
+- [Tamer Basar](http://tamerbasar.csl.illinois.edu/) - Department of Electrical and Computer Engineering & Coordinated Science Laboratory, UIUC
+
+=====
+
+[Fully Decentralized Multi-Agent Reinforcement Learning with Networked Agents](Zhangetal2018b.pdf)
+
+#### The Challenge
+
+Reinforcement learning is a type of learning in which the decisionmaker (also called the agent) seeks to achieve optimal behavior in the presence of uncertainty by interacting with the environment.
+
+Multi-Agent Reinforcement Learning (MARL) is the deep learning discipline that focuses on models that include multiple agents that learn by dynamically interacting with their environment.  MARL systems are intrinsically distributed.  The complexity of MARL scenarios increases with the number of agents in the environment.
+
+There are two main kinds of MARL: centralized and decentralized.  Centralized MARL models, which are easier to implement, use a controlling authority to manage rewards; however, this feature of centralized MARL reduces autonomy of the system.  That's why researchers have looked to decentralized MARL models to improve autonomy.  
+
+Instead of a controlling authority managing the rewards for each one of the agents, [decentralized MARL](https://towardsdatascience.com/smart-incentives-and-game-theory-in-decentralized-multi-agent-reinforcement-learning-systems-58442e508378) relies on agents incentivized to act autonomously.  Agents compute their best-response policies themselves in decentralized MARL.  However, decentralized MARL is more difficult to implement, especially in scenarios with large numbers of agents.
+
+Building an incentive model for large-scale MARL systems remains one of the biggest challenges for the implementation of these novel architectures.
+
+#### Why this paper is important
+
+This paper introduces two decentralized MARL actor-critic algorithms with function approximation.  These algorithms are theoretically proven and then their implementation and real-world performance is discussed.
+
+This work advances foundational knowledge needed to improve decentralized MARL for distributed, highly autonomous systems.  Decentralized MARL is ideal for many real-world scenarios such as sensor networks and intelligent transportation systems, where a central controller either does not exist or is costly to install.  Decentralized MARL's benefits include scalability and robustness to malicious attacks.
+
+MARL systems are one of the most exciting areas of research in deep learning, and as models become more decentralized, robust incentive models will be come more important.
+
+#### Networked multi-agent reinforcement learning
+
+This paper discusses a decentralized protocol in which agents are connected by a possibly time-varying communication network which serves as the channels for agents to exchange information in the absence of any central controller.  This type of MARL seeks to maximize rewards of all agents over the network.
+
+In the described model, the actor step is performed individually by each agent without needing to infer the policies of others.  In the critic step, each agent shares its estimate of the value function with its neighbors on the network so that a consensual estimate is achieved, which is further used in the subsequent actor step.  
+
+#### Benefits of the current approach
+
+For the most part, the benefits of this approach, which relies on actor-critic algorithms, are typical of standard distributed distributed/decentralized algorithms over networked systems.  
+
+- Local information at each agent is able to diffuse across the network, making the network-wide maximum reward achievable.
+
+- Robustness against malicious attacks
+
+- Communication efficiency
+
+- Scalability of algorithms with high-dimensional state-action spaces.  An additional advantage of this particular approach over previous distributed MARL approaches is that by combining decentralized network architecture and function approximation, this approach can be applied to large-scale MARL problems.
+
+#### Contributions of this approach
+
+1. Formulation of the fully decentralized MARL problem for networked agents, and implementation of a version of the policy gradient theorem adapted to this setting.
+
+2. Development of two decentralized actor-critic algorithms with function approximation, which enable the present approach's application to large-scale MARL problems.
+
+3. In the special case of where linear function approximation is used, convergence guarantees are established for the proposed algorithms.  This is in contrast to previous approaches which estimate the reward of all agents to be identical.
+
+> Our work appears to be the first study of fully decentralized MARL algorithms for networked agents with function approximation, with probable convergence guarantees.
+
+In this approach, multiple agents are considered to be heterogeneous with distinct policies and rewards, while some multi-task RL algorithms rely heavily on the assumption that the policies of various tasks are similar to a great extent.
+
+#### Conclusions and Future Directions
+
+In this paper, the problem of MARL with network agents is considered -- specifically, the fully decentralized setting in which each agent makes individual decisions and receives local awards, while exchanging information with neighbors over the network to accomplish optimal network-averaged return.
+
+In this context, two decentralized actor-critic algorithms with function approximation are proposed, theoretically validated, and tested, which can work on large-scale MARL problems with numerous agents and massive state-action spaces.
+
+Future work in this realm, proposed by the researchers, is to extend these algorithms and analyses to a setting with not only collaborative agents, but also competitive ones over the network.  A second future goal is to extend this algorithm to MARL settings with continuous action spaces.
