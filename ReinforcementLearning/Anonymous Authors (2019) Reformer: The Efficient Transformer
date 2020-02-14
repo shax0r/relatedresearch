@@ -1,0 +1,27 @@
+Anonymous authors
+Reformer: The Efficient Transformer
+
+[REFORMER: THE EFFICIENT TRANSFORMER]
+
+Transformer: Language Modeling 
+
+The authors developed and empirically evaluated the Reformer, an enhanced version of the Transformer which is a machine learning model that uses layers of self-attention and a positional feed-forward layer to code long ranges of consecutive text information--introduced originally by Vaswani et al (2017). The Transformer processes the representations of position data to its inputs and outputs, rather than into its structure, and does not require a specific sequence of data to process from end to end---allowing for information to travel at a shorter distance. The authors of this paper suggest that the challenge of the Transformer model is the need for more memory than a single-layer model due to the activation’s storage for backpropagation, the dept of feed-forward layers, and the attention on the long sequences of information. They propose a Reformer model to improve the efficiency of the Transformer by using reversible layers, splitting activations inside feed-forward layers, and locality sensitive hashing to shorten the length of sequences. 
+
+Modelling Approach
+The authors use synthetic task, a text task, and an image generation task and evaluate these based on the equation, Attention (Q, K, V ) = softmax( √ QKT /√ dk )V , where inputs Q, K, and V equal queries, keys, and values respectively.
+
+The authors adapted the dot-pattern attention in the Transformer, where the set of queries, values, and keys are computed in parallel, and used a memory efficient-multi-head attention approach where attention is calculated per query and only in memory proportional to length. The authors focused attention on neighboring keys in K, closest to each query (qi). To identify the neighboring elements, the authors generated a locality sensitive scheme where the queries and keys were shared, sorted according to their hash bucket, each query set to their neighboring keys, and then grouped (i.e. chunked). 
+
+QK sharing
+The shared query-key space did not perform worse than regular attention; in fact, for the text task it appeared to train slightly faster. Accuracy remains constant when switching to shared-QK attention. 
+Reversible layers 
+The authors introduced the RevNets layers can be reversed one-by-one as back-propagation proceeds from the output of the network to its input. Combining the attention and feed-forward layers inside the RevNet block reduced memory by operating on one chunk at a time in comparison to the feed-forward layer which is batched by performing operations for all positions in parallel. With chunking and reversible layers, the memory used for activations in the whole network is independent of the number of layers. 
+The results showed that the memory savings in the reversible Transformer do not come at the expense of accuracy.
+LSH Attention in Transformer
+The model trained with full attention can be immediately used with LSH attention, but at some loss of accuracy. When trained from scratch with LSH attention, the model trained with 4 hashes achieves almost perfect accuracy as well. Interestingly, the accuracy becomes perfect when evaluated with 8 hashed, and reduces when evaluated with 2 or 1 hashes. 
+The Reformer 
+The results showed that the Reformer can fit large models on a single core and train fast on long sequences. 
+Key Findings and Application
+The authors created the Reformer with the capabilities of processing long sequences as the Transformer, and with an enhanced feature of using small memory. Key findings included that the LSH attention models performed nearly accurate in comparison to the full attention when evaluated within the parameters of multiple concurrent hashes. 
+
+This work demonstrates the validity of computational learning methods deep educe the memory footprint and computational requirements of Transformer models. machine learning to perform modelling of language data specifically for text and images, and timeseries forecasting. 
