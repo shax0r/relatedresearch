@@ -1,0 +1,48 @@
+Zhuoran Yang, Kaiqing Zhang, Mingyi Hong, and Tamer Basar
+
+A Finite Sample Analysis of the Actor-Critic Algorithm
+
+The importance of actor-critic algorithms
+
+Actor-critic algorithms are deep reinforcement learning algorithms that exist within parameterized “actors” and “critics”. The actor is the policy which conducts actions in an environment. The policy essentially updates through learned state-value functions. The critic, on the other hand, calculates the value functions to help the actor during the learning process; it “criticizes” the actions made by the actor. These are usually the state value, state-action value, or advantage value.  
+
+Actor-critic algorithms are important because they require little computations in order to select an action or many actions. If there are infinite number of possible actions, learning algorithms must search through infinite values to pick a specific action. If the policy is stored, then extensive computatons may not be needed for each action selected. With an actor critic algorithm, optimal probabilities of selecting various actions can occur quickly and more efficiently. Common real-world examples of the actor-critic algorithms include board games and robotics. 
+
+Actor-critic algorithms with nonlinear function approximations
+
+In this paper, the authors attempt to bridge the gap between theory and real applications by analyzing the performance of batch actor-critic algorithms for reinforcement learning with nonlinear function approximations within a finite sample. Current works have analyzed actor-critic-algorithms based on the two-time scale stochastic approximations, which does not take into account finite sample performance of the algorithm. The authors thus attempt to better understand the performance of reinforcement learning tools with nonlinear function approximations which have more real-world applications. 
+
+Convergence Theory of the Actor-Critic Algorithms
+
+Convergence findings typically are based on two-time scale stochastic approximations. Two-time scale stochastic approximations are often used in reinforcement learning to capture optimum points of an approximate function in noisy domains. Previous papers have studied convergence and used the Robbins-Monro condition so that the updates scale faster than the actor. The condition allows for the two-time scale learning rates to fix the actor updates and focus on the behavior of the critic. All works on convergence of actor-critic algorithms are based on ordinary differential equations that capture the asymptotic behavior of the updates and only focus on random variables in these updates. Analyses of this type are incapable of identifying the performance of the algorithm using a finite number of samples—which is found in real-world applications. 
+
+Batch Actor-Critic Algorithm
+The authors analyze the finite sample performance of the actor-critic algorithm by considering a batch counterpart which ties into the statistical error of policy evaluation using finite samples and nonlinear function approximations. 	
+Methods 
+
+Convergence of Online Actor-Critic Algorithm
+
+•	The authors used two-time-scale stochastic approximation, where the actor and critic steps are viewed distinctly. They set the critic to estimates the action-value function through K steps of the policy evaluation to obtain a sequence of parameters, and updates within the function F. The online-actor algorithm was produced with a two-time scale learning rate.  
+
+Analysis of the actor-critic algorithms
+•	Each critic step was bound by a statistical error of policy evaluation. The statistical error is the summation of function class F and the desired policy.
+•	Using the statistical error, the authors analyze the performance of actor updates with the value functions.
+•	The authors set the policy gradient based on the parameters of the critic to estimate an action-value function. The parameter sequence set by the actor indicated that the gradient norm of the objective function at any point is close to zero up to a fundamental error. The results indicate that the error corresponds to the statistical rate of policy evaluation with nonlinear function approximations. Additionally, for the linear functions, as the number of samples reach towards infinity, convergence in the online actor-critic algorithm occurs, and is based on the asymptotic behavior of two-time-scale stochastic approximation.
+
+Theoretical Results
+Algorithm 1 Batch Actor-Critic Algorithm 
+Input: 
+MDP (S, A, P, p0, r,); number of total policy updates T; number of evaluation steps K; numbers of samples n and m; the initial parameters ø0; the learning rates {↵t}t 0. 
+Output:
+The final policy pi øT.
+Assumption and Proposition
+
+The authors bound the statistical error of policy evaluation during each critic step. Using tools from nonparametric regression, they demonstrate that such an error is the sum of two terms, which correspond respectively to the bias and variance that arise in policy evaluation with finite samples and function approximations. The authors’ proposition describes the bias and variance that arise in the critic using function approximations with finite samples. They continue to conduct mathematical proofs of using nonparametric regressions.
+
+Theorem: 
+
+The authors observed that the performance of the actor corresponded to the statistical error of the critic. The critic computed an estimated policy gradient and had a bias when updating the actor using the gradient. 
+
+Conclusion and Relevance to Emergent 
+
+The results in this paper established a convergence of a batch actor critic algorithm for reinforcement learning, where the critic performed policy evaluation with nonlinear function approximations and finite samples. Using this algorithm, the authors demonstrated how the statistical error of the policy evaluation affected the behavior of the actor updates. Specifically, at any limit point of the actor updates, the gradient of the function was bounded by the bias of the policy gradient. This is relevant to scientific and medical decisions made regarding distributing a finite supply of resources i.e. vaccines and medications. 
