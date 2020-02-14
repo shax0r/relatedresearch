@@ -1,0 +1,43 @@
+Authors:
+•	Yijia Wang- Department of Industrial Engineering, University of Pittsburgh 
+•	Daniel R. Jiang - Department of Industrial Engineering, University of Pittsburgh 
+
+Structured Actor-Critic for Managing Public Health Points-of-Dispensing
+
+
+The Challenge of Medication Dispersals
+
+Resource allocation and rationing issues have an impact on first responder operated community sites that disperse medications such as vaccinations and antibiotics during public health emergencies. The prioritization of medication dispersal based on demand groups (i.e. children, elderly, or most disease susceptible) is essential when considering factors such as drug costs and limited quantities. In light of the ongoing US opioid overdose epidemic, naloxone is a drug that can rapidly reverse overdoses, though the it proves costly to dispense widely and. 
+
+Approach Development
+The authors proposed a reinforcement learning algorithm solution to improve dispersal decisions for “point of dispersal” (POD) sites in order to maximize utility and allocate accessible resources to the PODs in times of scarcity. More specifically, they proposed an actor-critic algorithm, and structured it after the Markov Decision Process (MDP) which tracks the policy and value function approximations and improves empirical convergence rates. The algorithm outputs demand data as POD attributes and inventory requests, and continuously processes data as it arrives, and gradually updates the policy according. This process is likened continual medicine batch requests per crisis case. 
+
+This research addresses ongoing public health problems, with applications in demand heterogeneity, the potential for limited storage capacity, and consumption dynamics change rapid expansions of urban populations, rising incomes, cost of drug formulations, and the hierarchical relationship between inventory control and dispensing. 
+
+Model Formulation: Markov Decision Process (MDP)
+
+The authors generated a Markov decision process (MDP) model with an upper level decision (i.e. inventory requests) that controls the lower-level problem (i.e. inventory rationing) and optimizes dispensing decisions for the random set of PODs. 
+
+The authors set up the decision-making process based on naloxone distribution in the following order: 
+1.	Inventory replenishment by managers
+2.	PODs make naloxone requests to the decision center 
+3.	Inventory allocation to PODs
+
+The authors derived structural properties of the finite-horizon MDP model (at time t) and proposed an approximate dynamic programming algorithm that leveraged the structure in both the policy and the value space. This modeling decision accounted for public health settings where scarcity in resources may occur. The upper and lower levels were programed to receive all POD requests whenever resources are available, and resources were replenished by inventory manager’s decision process. The proposed algorithm was attained under 2 assumptions and propositions outlined in the paper (pp. 11-12).
+
+Actor-Critic Algorithm Rationale
+The authors aimed to use an actor-critic the algorithm in order to estimate the post-decision value function and optimal (base stock) policy by exploiting the structures of both. Using the stochastic approximation method, the algorithm approximations were repetitive and each iteration included the following steps:
+
+1.	Observed information sequence and the attribute request vectors for the planning horizon
+2.	Observed the value of the current state under the policy approximations in order to update the value approximations
+3.	Used the implied base-stock threshold from the latest value function to update the approximate policy
+
+Case Study: Allegheny County    
+The authors modeled the system after an organization in the county responding to the opioid crisis in the area, with the assumption that naloxone utility was determined by satisfied requests, and cost of ordering, storage and disposal. Four classes of first responders were analyzed, and after 106 iterations, the higher priority class had more dispensing requests, i.e. having higher utility value, in comparison to lower priority classes.  
+Benefits of the current approach
+
+1.	The new actor-critic algorithm could be adapted to process aggregated data to facilitate medication dispensing in ongoing public health crises e.g. the opioid epidemic. 
+2.	The finite-horizon MDP model encoded heterogeneity in demand within the attribute to determine demand. Demand heterogeneity included various types of responders, region (i.e. prioritizing areas with a concentrated need), and other related information. 
+3.	The MDP-based algorithm utilizes both the actor and the critic, where the actor is the policy function approximations, and the critic criticizes the actions of the actor.
+Conclusion and Applications
+The paper illustrated how a finite-horizon MDP model for optimizing inventory control and making dispensing decisions can assist organizations during public health crises. The authors’ the structured actor-critic algorithm may have broader methodological applications, given the high-quality policies obtained in only three iterations, and the less noisy convergence of the policy compared to similar algorithms. The application of the algorithm may prove successful in dispensing naloxone to first responders based on the regions impacted by the opioid crisis, or other epidemics that require astute allocation decision making.  
