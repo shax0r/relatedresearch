@@ -10,18 +10,25 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Lint changelog file
+    - name: Lint main
       uses: docker://avtodev/markdown-lint:v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
-        args: './CHANGELOG.md'
+        args: './README.md'
+        
+    - name: Lint AutonomousResearch readme file
+      uses: docker://avtodev/markdown-lint:v1
+      with:
+        rules: '/lint/rules/changelog.js'
+        config: '/lint/config/changelog.yml'
+        args: './AutonomousResearch/README.md'  
 
     # Or using current repository as action:
 
-    - name: Lint changelog file
+    - name: Lint main readme file
       uses: avto-dev/markdown-lint@v1
       with:
         rules: '/lint/rules/changelog.js'
         config: '/lint/config/changelog.yml'
-        args: './CHANGELOG.md'
+        args: './README.md'
