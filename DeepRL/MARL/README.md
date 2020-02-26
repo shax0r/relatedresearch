@@ -1,16 +1,23 @@
 
 ---
 ## 2019
+
+
 ---
 
+
+
 ## Distributed Multi-Agent Reinforcement Learning by Actor-Critic Method
+
 
 ### Paulo C. Heredia and Shaoshuai Mou
 
 
 - [Paulo Heredia](https://www.cerias.purdue.edu/site/people/students/view/1918) - B.S. from MIT, studying PhD at Purdue University in Shaoshuai Mou's Lab
 
+
 - [Shaoshuai Mou](https://engineering.purdue.edu/AIMS) - Professor, Purdue University and Director, Autonomous & Intelligent Multi-agent Systems (AIMS) Lab
+
 
 =====
 
@@ -173,3 +180,231 @@ In this paper, the problem of MARL with network agents is considered -- specific
 In this context, two decentralized actor-critic algorithms with function approximation are proposed, theoretically validated, and tested, which can work on large-scale MARL problems with numerous agents and massive state-action spaces.
 
 Future work in this realm, proposed by the researchers, is to extend these algorithms and analyses to a setting with not only collaborative agents, but also competitive ones over the network.  A second future goal is to extend this algorithm to MARL settings with continuous action spaces.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+# Precision medicine as a control problem: Using simulation and deep reinforcement learning to discover adaptive, personalized multi-cytokine therapy for sepsis
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+### Authors
+
+
+[BRENDEN K. PETERSEN]( https://www.researchgate.net/scientific-contributions/2052798158_Brenden_K_Petersen)
+
+
+
+
+
+ [JIACHEN YANG]( https://www.cc.gatech.edu/~jyang462/)
+
+
+
+
+[WILL S. GRATHWOHL]( http://www.cs.toronto.edu/~wgrathwohl/)
+
+
+
+
+[CHASE COCKRELL]( https://directory.uchicago.edu/organizations/61?type=departments)
+
+
+
+[CLAUDIO SANTIAGO]( https://people.llnl.gov/santiago10)
+
+
+
+[GARY AN]( https://directory.uchicago.edu/organizations/61?type=departments)
+
+
+
+[DANIEL M. FAISSOL]( https://people.llnl.gov/faissol1)
+
+
+
+###2018,
+
+
+
+[Learning to Control Random Boolean Networks: A Deep Reinforcement Learning Approach](DeepRL/MARL/Petersen et, at._2018.pdf)
+
+
+
+
+**Approach Overview/Why the Research is Important**
+
+Any abnormality in living organisms’ immune systems directly result in tissue damage, which negatively impact mortality rates. In humans, dysregulation of the body’s immune system causes a condition known as [Sepsis] leading to a 28-50% mortality rate. [Petersen et, al.]( https://www.researchgate.net/scientific-contributions/2052798158_Brenden_K_Petersen), in their article, propose a novel approach that building on a previously developed agent-based model: Innate Immune Response Agent-Based Model (IIRABM) by combining it with a deep RL framework to device novel treatment policy for Sepsis. Particularly, the authors use a deep RL framework to control the simulation of a biological system (the human inflammatory signaling network responding to injury). According to the authors, the previously developed IIRABM reproduces general clinical trajectories of Sepsis by simulating the human inflammatory signaling network response to injuries. The model simulates the interaction of multiple cell types and is initiated by setting five physiological parameters defining sizes and nature of the injuries/infections as well as measures of the host’s resilience: microbial invasiveness, initial injury size, environmental toxicity, microbial toxigenesis, and host resilience. As explained by the authors, the control/mediation problem underlying sepsis is dysregulation of Cytokine signaling, which they propose a novel solution by casting the IIRABM as a deep RL environment. Their proposed approach exploits systemic cytokine and immune cell measurements during the course of treatment.
+
+
+
+**Inputs**
+
+
+
+		*Structural Input*
+
+
+
+-	Innate Immune Response Agent-Based Model (**IIRABM**) implemented in C++ and exposed to Python using Boost C++ libraries.
+
+
+
+
+-	OpenAI Gym Environment.
+
+
+
+
+-	Deep RL framework (Deep Deterministic Policy Gradient (DDPG) algorithm) implemented in Python. 400 nodes for the Actor network and 300 nodes for the Critic network. For the critic network, the authors added a hyperbolic tangent activation to the output layer whereas in the critic network, the authors added actions at the second hidden layer. Further, for exploration purpose, the authors added uncorrelated Gaussian noise with a standard deviation of 0.1 independently to each dimension of the selected action vector. The standard deviation was decreased 10-fold every 1,000 episodes.
+
+
+
+-	NVIDIA Titan X GPU (for training).
+
+
+
+
+*Parametric Inputs* (21 real-valued state variables of interest at IIRABM’s grid points)
+		
+
+•	Concentrations for 12 cytokines.
+
+
+
+•	 Concentrations for2 cytokine receptors.
+
+
+
+•	Counts for 5 cell types.
+
+
+
+
+•	 A measure of tissue damage.
+
+
+
+
+
+•	A measure of infection.
+
+
+
+
+**Intermediaries**
+
+
+	Potential-based reward signal: to focus the learning process to terminal rewards as a result of long episodes.
+
+
+
+
+	Terminal reward Signals ( -/+ 250), which denotes death and health outcomes.
+
+
+
+
+	Action penalty function: to counter the implication of action implementation i.e drugs side-effects.
+
+
+
+
+
+**Output**
+
+
+
+An adaptive learned healing policy that significantly reduces parameterized patients’ mortality rates
+
+
+
+
+**Breakthrough/Novelty**
+
+
+
+
+•	The proposed strategy led to a learned policy resulting to 0% patient mortality during test time for the patient parameterization on which DDPG was trained.
+
+
+
+
+•	After analyzing the generalizability of the learned policy by testing it over a set of 500 different patient parameterizations with 1-99% baseline mortality rates, the authors established that the overall mortality rate across all the 500 patient parameterizations reduced from 46.0 percent (without intervention) to 0.8 percent under the learned policy. 
+
+
+
+>Additionally, under the learned policy, 460 of the 500 patient parameterizations (92%) have a mortality rate of 0%, 39 patient parameterizations (7.8%) exhibited reduced mortality rate (with an average reduction of 87%), and 1 patient parameterization resulted in no change in mortality rate compared to baseline.
+
+
+
+
+•	The learned policy did not cause an increase in mortality for any patient parameterization and, from the results, it appears to generalize quite well despite being trained on a single patient parameterization. 
+
+
+
+•	After testing the learned policy using patient parameterization with recurrent injury values, the authors found that the policy’s actions were adaptive; actions were able to switch from down-regulation to up-regulation during treatment in actions prescribed for certain cytokines like PAF. In an experiment, the authors proved the learned policy’s adaptive transition between up-regulation and inhibition, as well as dependence on the severity of patients’ initial injury.
+
+**What to Note/Challenges/Assumptions**
+
+
+
+-	The sepsis environment is inherently and deeply stochastic, mimicking the heterogeneity of the clinical setting. 
+
+
+>Stochasticity leads to a substantially more challenging RL problem, in part because it causes the “signal” used for learning to be very noisy. That is, under the same conditions, a given action is
+sometimes “good” and sometimes “bad.” This problem is exacerbated by the fact that episodes are relatively long (up to 4,603 steps, or 90 days of simulated time) and the IIRABM provides only one natural reward: a binary life or death outcome at the end of the episode. This results in a very difficult credit assignment problem, i.e. it is difficult to determine which of the many actions taken in a single episode are responsible for the observed outcome.
+
+
+
+
+
+-	The clinical problem of sepsis and its representation in the sepsis environment have not been solved by humans, and therefore such techniques as seeding the Deep Reinforcement Learning Agent with demonstrations of ‘good’ and ‘bad’ episodes are not applicable in efforts to overcome sparse rewards. 
+
+
+
+-	The authors assume that the spatially aggregated state space in IIRABM (each state variable summed across all grid points) provides sufficient information for learning a near-optimal policy.
+
+
+
+
+-	The IIRABM environment is computationally expensive.
+
+
+
+**Direction for Future Research**
+
+
+
+Future  research studies should seek to further validate the generalizability of the proposed strategy using clinically diverse patients’ parameterization. 
+
+
+
+
+Also, further experiments should be conducted using more clinically relevant observation space dimensions for Sepsis. 
+
+
+**Application**
+
+
+The proposed strategy is novel in drug discovery. It can act as a general strategy applicable in the formulation of specific, individual strategies aimed at solving continuously changing, immune-system-dependent health conditions in living organisms. 
+
+
+
+
+
+
