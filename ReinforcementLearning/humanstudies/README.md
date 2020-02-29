@@ -11,9 +11,9 @@ This folder contains research related to the use of reinforcement learning in re
 
 ### Authors
 
-[Daniel McDuff](https://bredesencenter.utk.edu/people/dali-wang/) - PhD student in co-author Husheng Li’s Lab - Department of Electrical Engineering and Computer Science, University of Tennessee, Knoxville, TN
+[Daniel McDuff](https://www.microsoft.com/en-us/research/people/damcduff/) - Researcher at Microsoft
 
-[Ashish Kapoor](https://bredesencenter.utk.edu/people/dali-wang/) - Department of Electrical Engineering and Computer Science, University of Tennessee, Knoxville, TN; Environmental Science Division, Oak Ridge National Laboratory, Oak Ridge, TN 
+[Ashish Kapoor](https://www.microsoft.com/en-us/research/people/akapoor/)[Google Scholar](https://scholar.google.com/citations?user=4D1n8scAAAAJ&hl=en) - Senior Principal Research Manager, Microsoft Research Redmond, WA
 
 ---
  
