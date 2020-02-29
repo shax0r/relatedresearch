@@ -50,7 +50,7 @@ Many data points are needed because it is difficult to determine which specific 
 
 The reward function framework used in the present study involves both an intrinsic (i.e., human SNS response) and extrinsic (task-specific -- i.e., good performance on the driving task) component.  Specifically, a weighting parameter is used, lambda, which provides a trade-off between extrinsic motivation (the desire to complete the task) and intrinsic motivation (the desire to experience safety-related physiological responses).  The goal of the framework is to complete the task while minimizing the SNS response.  Low levels of lambda indicate risk-averse behavior (i.e., high intrinsic motivation), while mid-range lambda values lead to optimal behavior in learning and desire to accomplish the task.
 
-# Methods
+### Methods
 
 An autonomous driving scenario was used as the task in this study.  Then a deep neural network, a convolutional neural network or CNN, was trained to predict SNS responses to be used in reinforcement learning.
 
