@@ -35,7 +35,7 @@ In this paper, Wang and colleagues examine cell movement in the early phases of 
 
 > This paper presents a new approach to study cell movement by adopting deep reinforcement learning approaches within an agent-based modeling framework. Deep reinforcement learning is good at dealing with high-dimensional inputs and can optimize complex policies over primitive actions, which naturally aligns with the complex cell movements patterns that occur during *C. elegans* embryogenesis. 
 
-### The Modelling Approach 
+### The Modelling Approach  
 
 The authors used an agent-based modelling (ABM) approach, a powerful approach for the analysis of complex tissues and developmental processes, in which each individual cell is modeled as an agent.  The authors also modeled collective cell migrations.  Deep reinforcement learning was used to train neural networks from 3D time-lapse imaging using information on cell locations, neighbors, and cell-cell interactions gleaned from lineage tracing.  Following training of the neural networks, a feasible and optimal cell migration path is determined and constrained by underlying regulatory networks and the cell's physical environment.
 
