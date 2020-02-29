@@ -46,8 +46,20 @@ The present study trains an artificial network based on the physiological signal
 
 Many data points are needed because it is difficult to determine which specific action from a sequence was responsible for a success or failure.  When rewards are sparse, this can make reinforcement learning modeling even more difficult.
 
-### HEADER 4
+### The reward function framework 
+
+The reward function framework used in the present study involves both an intrinsic (i.e., human SNS response) and extrinsic (task-specific -- i.e., good performance on the driving task) component.  Specifically, a weighting parameter is used, lambda, which provides a trade-off between extrinsic motivation (the desire to complete the task) and intrinsic motivation (the desire to experience safety-related physiological responses).  The goal of the framework is to complete the task while minimizing the SNS response.  Low levels of lambda indicate risk-averse behavior (i.e., high intrinsic motivation), while mid-range lambda values lead to optimal behavior in learning and desire to accomplish the task.
+
+# Methods
+
+An autonomous driving scenario was used as the task in this study.  Then a deep neural network, a convolutional neural network or CNN, was trained to predict SNS responses to be used in reinforcement learning.
+
+The SNS signal used was the well-validated photoplethysmographic (PPG) signal to capture the volumetric change in blood in the periphery of the skin.  When someone ie fearful or anxious, their blood volume pulse waveform envelope, as measured by PPG, gets smaller.
+
+Four participants completed the study -- two females and two males -- in which they participated in a simulation, lasting about 20 minutes, in which they drove a vehicle around a maze to find an exit point.
 
 ### Results and Discussion
 
-This paper presents a new approach to learning in which the reward function is supplemented with a model directly learned from the human sympathetic nervous system.  The model is incorporated into a reinforcement learning paradigm, and the results indicate that the model can improve both safety and efficiency of learning.  Such a function trained on physiological data can improve learning and reduce dangerous failures that could occur during training.
+This paper presents a new approach to learning in which the reward function is supplemented with a model directly learned from the human sympathetic nervous system.  The model is incorporated into a reinforcement learning paradigm, and the results indicate that the model can improve both safety and efficiency of learning.  Participants who had used the CNN for the intrinsic reward component performed etter than the heuristic, and the researchers believe that the trained CNN is much richer than distance-based measures.
+
+The authors argue that such a function trained on physiological data can improve learning and reduce dangerous failures that could occur during training.
