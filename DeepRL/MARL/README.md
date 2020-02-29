@@ -408,3 +408,197 @@ The proposed strategy is novel in drug discovery. It can act as a general strate
 
 
 
+
+
+# Learning to Control Random Boolean Networks: A Deep Reinforcement Learning Approach
+
+
+
+
+
+### Authors
+
+[Georgios Papagiannis]( https://www.researchgate.net/profile/Georgios_Papagiannis3)
+
+
+
+
+
+ [Sotiris Moschoyiannis](https://www.surrey.ac.uk/people/sotiris-moschoyiannis)
+
+
+
+### 2020,
+
+
+
+[Learning to Control Random Boolean Networks: A Deep Reinforcement Learning Approach](DeepRL/MARL/Papagiannis and Moschoyiannis_2020.pdf)
+
+
+
+
+**Approach Overview/Why the research is Important**
+
+
+Cell behavior in living organisms is at the center of normal genetic processes that ensure normal biological growth and functionality. Cell perturbation as result of malfunctions of other cells or environmental causes like climate change lead to cell state transition: from current normal state to other states that may exhibit undesirable behavior.  For instance, Apoptosis and Proliferation behaviors exhibited by cancerous cells. According to [Papagiannis]( https://www.researchgate.net/profile/Georgios_Papagiannis3) and [Moschoyiannis]( https://www.surrey.ac.uk/people/sotiris-moschoyiannis), [Gene Regulatory Networks (GRNs)]( https://en.wikipedia.org/wiki/Gene_regulatory_network) have been observed to exhibit sudden emergence of ordered *undesirable behavior/collective behavior*, which are manifested as *attractors* in [Random Boolean Networks]( https://arxiv.org/pdf/nlin/0408006.pdf). In that context, developing a strategy aimed at causing desirable perturbation (towards desirable behavior) by targeted interventions to specific genes of a cell, becomes crucial in controlling cell behavior to ensure they cease to exhibit *undesirable/collective behavior*. 
+
+
+
+[Papagiannis]( https://www.researchgate.net/profile/Georgios_Papagiannis3) and [Moschoyiannis]( https://www.surrey.ac.uk/people/sotiris-moschoyiannis), in their paper, apply a [Deep Q Network (DQN) with Double Q Learning (Double DQN)]( https://towardsdatascience.com/double-deep-q-networks-905dd8325412); which they refer as agent, that is trained by probabilistically sampling experiences from the environment. The environment being a Random Boolean Network (RBN), the proposed strategy samples experiences using [Prioritized Experience Replay (PER)]( https://arxiv.org/abs/1511.05952) with the aim of determining a near optimal control policy that drives the RBN from any state towards the *target attractor*. 
+
+
+
+
+
+>The proposed approach makes no assumptions and requires no knowledge about the underlying structure, connectivity, dynamics or Boolean functions of the RBN. The agent learns how to control the network merely by direct interaction and observation of the RBN’s state transitions. In order to ensure that an intervention is as less intrusive to the network as possible we limit the number of interventions allowed per time step to a maximum of one and attempt to control the RBN in a restricted specified time frame.
+
+
+
+
+**Inputs**
+
+
+
+•	A set of RBN states
+
+
+
+
+
+•	Target attractor(s)
+
+
+
+
+
+•	A set of actions i.e. possible RBN interventions or allowed interventions
+
+
+
+    		**Structural Input Elements**
+
+
+
+•	Random Boolean Network (*Environment*) with a defined number of nodes; the nodes carry binary gene expression function in a Gene Regulatory Network context.
+
+
+
+•	Double Deep Q Network with an input layer of size n corresponding to the observed state of the RBN. The Double DQN is also with a set size experience replay buffer for prioritized experience replay. The prioritized sampling function is probabilistic, which means it entails  a small constant ‘c’ to prevent experience without interventions from ever being sampled. According to the authors, the c constant and other Importance Sampling Weights are folded in the differentiation equation aimed at minimizing the loss function.
+
+
+
+With c and Sampling Weights in loss function equation, >   Prioritized Experience Replay replays some experiences more than others according to how big the actual versus the predicted Q value was, with the assumption that the function approximator has ‘more’ to learn from experiences whose best action expected reward it predicted wrongly with greater margin.
+
+
+
+		
+
+**Intermediaries**
+
+•	A deterministic transition matrix 
+
+
+
+•	Stochastic rewards (weighted rewards denoting: non-attractor state, non-target attractor state or, target attractor/terminal state)
+
+
+
+**Output**
+
+
+Near optimal policy controlling an RBN towards the target attractor
+
+
+
+
+
+**Breakthrough(s)/Novelty**
+
+
+
+•	After training the Double Deep Q Network for 2.5 million episodes and using a greedy policy with the highest expected reward to control the RBN, the Double Deep Q Network attained 100% controllability.
+
+
+
+
+
+•	Even though the authors increased the state space by a factor 1048576 (2power20) the proposed approach determined a control strategy that required only about 2.5 more interventions than [XCS]( https://pythonhosted.org/xcs/) needed for RBNs with 5 nodes. The strategy arrives at a near optimal policy from few time stems comparative to existing comparable strategies.
+
+
+
+•	The proposed strategy is the first approach to use Double Deep Q Network and Prioritized Experience Replay as learning agent to directly control an RBN without any prior knowledge of the RBN’s structure, connectivity, Boolean functionality, or transition matrix knowledge. 
+
+
+
+
+•	The proposed approach has higher scalability (25 nodes) compared to previous comparable approaches.
+
+
+
+
+
+**Assumptions/What to note**
+
+
+
+•	The proposed strategy’s probabilistic Prioritized Experience Replay assumes that the Double DQN’s non-linear function approximator has ‘more’ to learn from experiences whose best action expected reward itpredicted wrongly with greater margin.
+
+
+
+
+	>practically training can be very time consuming, as training a Double DQN to find a control strategy for RBNs can require a large number of experiences to be sampled.
+
+
+
+
+	>the use of non-linear function approximator (Double DQN) does not guarantee arrival at near optimal policy at every time step.
+
+
+
+
+
+
+**Direction for Future Research**
+
+
+
+
+•	The authors aim to investigate further the application of Deep Reinforcement Learning algorithms on the problem of control of RBNs, where they intend to focus on whether they can use the proposed strategy to determine a network’s driver nodes and attempt to control RBNs that are updated asynchronously.
+
+
+
+
+•	The authors also aim to improve our current control implementation to scale to significantly larger RBNs as well as study other approaches to address the current limitations of the approach: 
+
+
+
+
+> practically training can be very time consuming, as training a Double DQN to find a control strategy for RBNs can require a large number of experiences to be sampled.
+
+
+
+> the use of non-linear function approximator (Double DQN) does not guarantee arrival at near optimal policy at every time step.
+
+
+
+
+•	The generalizability of the proposed approach can be validated by 
+applying the strategy to the  problem of controlling Probabilistic Boolean Networks.
+
+
+
+
+
+**Application**
+
+
+
+
+The proposed strategy can be applied in learning near optimal drug discovery policies based on interventions aimed at perturbing cell activity towards desirable target behavior (attractors).  Specifically, the strategy can output near optimal policies for correcting/controlling abnormal cell behavior of cancerous cells. 
+
+
+
+Generally, the proposed strategy is novel in solving control problems in cases where the underlying dynamics, structure as well as transition mechanism of a system is unknown. 
+
+
+
