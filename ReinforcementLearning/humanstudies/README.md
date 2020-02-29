@@ -29,9 +29,11 @@ The hypothesis is tested in a simulated driving environment.
 
 The results show that the reward function used in the simulated driving environment can increase the speed of learning and reduce the number of collisions during the learning stage.
 
-### The human sympathetic nervous system (SNS)
+### The human sympathetic nervous system (SNS) as both a survival mechanism and motivator of action
 
-The human autonomic nervous system is composed of the sympathetic and parasympathetic branches.  Of these, the sympathetic nervous system or SNS is known as the "fight-or-flight" response system, as it responds to dangerous situations in order to help mobilize resources to respond to immediate threats.  The SNS regulates the cardiovascular system, adrenal system, and other visceral functions.  When someone is confronted with a threat, their heart rate increases, sweat glands dilate, and energy resources are mobilized to support one's ability to escape from the threat (e.g., a predator or a dangerous situation while driving).
+The human autonomic nervous system is composed of the sympathetic and parasympathetic branches.  Of these, the sympathetic nervous system or SNS is known as the "fight-or-flight" response system, as it responds to dangerous situations in order to help mobilize resources to respond to immediate threats.  The SNS regulates the cardiovascular system, adrenal system, and other visceral functions.  When someone is confronted with a threat, their heart rate increases, sweat glands dilate, and energy resources are mobilized to support one's ability to escape from the threat (e.g., a predator or a dangerous situation while driving).  While SNS responses are meant as a survival mechanism, they also help us appraise a situation.  SNS responses can motivate us to act to avoid these types of dangerous and aversive situations.  For example, if you are in traffic and you sense that you might get in an accident, the feeling of your heart rate increasing may help you act faster to reduce your feelings of anxiety.
+
+As such, the signals of the human SNS can be used to model reward mechanisms.  People may act to avoid car accidents, for example, and this type of motivated behavior can provide a reinforcement learning framework that uses reward functions to achieve task-specific goals, and also tries to minimize aversive reactions such as SNS activation and feelings of physiological arousal resulting from feeling in danger, for example.
 
 
 
