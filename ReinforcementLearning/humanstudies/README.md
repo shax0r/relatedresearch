@@ -26,7 +26,10 @@ The hypothesis is tested in a simulated driving environment.
 
 The results show that the reward function used in the simulated driving environment can increase the speed of learning and reduce the number of collisions during the learning stage.
 
-### HEADER 1
+### The human sympathetic nervous system (SNS)
+
+The human autonomic nervous system is composed of the sympathetic and parasympathetic branches.  Of these, the sympathetic nervous system or SNS is known as the "fight-or-flight" response system, as it responds to dangerous situations in order to help mobilize resources to respond to immediate threats.  The SNS regulates the cardiovascular system, adrenal system, and other visceral functions.
+
 
 ### HEADER 2
 
