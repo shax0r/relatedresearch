@@ -36,11 +36,9 @@ The human autonomic nervous system is composed of the sympathetic and parasympat
 As such, the signals of the human SNS can be used to model reward mechanisms.  People may act to avoid car accidents, for example, and this type of motivated behavior can provide a reinforcement learning framework that uses reward functions to achieve task-specific goals, and also tries to minimize aversive reactions such as SNS activation and feelings of physiological arousal resulting from feeling in danger, for example.
 
 
+### Modeling human SNS activation in a reinforcement learning paradigm
 
-
-### HEADER 2
-
-> QUOTE
+> We present a novel approach to reinforcement learning that leverages an artificial network trained on physiological signals correlated with autonomic nervous system responses.
 
 ### HEADER 3
 
