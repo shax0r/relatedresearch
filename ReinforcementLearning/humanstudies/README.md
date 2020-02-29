@@ -6,6 +6,9 @@ This folder contains research related to the use of reinforcement learning in re
 ## 2019
 
 ##  [VISCERAL MACHINES: RISK-AVERSION IN REINFORCEMENT LEARNING WITH INTRINSIC PHYSIOLOGICAL REWARDS](McDuff_Kapoor.pdf)
+
+(note: The pages appear to be backwards in this PDF! I downloaded it twice to try to fix it.  Page 11 is the first page of the article, page 10 is the second page, etc.
+
 ### Daniel McDuff and Ashish Kapoor
 
 ### Authors
@@ -28,7 +31,9 @@ The results show that the reward function used in the simulated driving environm
 
 ### The human sympathetic nervous system (SNS)
 
-The human autonomic nervous system is composed of the sympathetic and parasympathetic branches.  Of these, the sympathetic nervous system or SNS is known as the "fight-or-flight" response system, as it responds to dangerous situations in order to help mobilize resources to respond to immediate threats.  The SNS regulates the cardiovascular system, adrenal system, and other visceral functions.
+The human autonomic nervous system is composed of the sympathetic and parasympathetic branches.  Of these, the sympathetic nervous system or SNS is known as the "fight-or-flight" response system, as it responds to dangerous situations in order to help mobilize resources to respond to immediate threats.  The SNS regulates the cardiovascular system, adrenal system, and other visceral functions.  When someone is confronted with a threat, their heart rate increases, sweat glands dilate, and energy resources are mobilized to support one's ability to escape from the threat (e.g., a predator or a dangerous situation while driving).
+
+
 
 
 ### HEADER 2
