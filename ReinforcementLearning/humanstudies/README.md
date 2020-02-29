@@ -5,9 +5,8 @@ This folder contains research related to the use of reinforcement learning in re
 
 ## 2019
 
+##  [VISCERAL MACHINES: RISK-AVERSION IN REINFORCEMENT LEARNING WITH INTRINSIC PHYSIOLOGICAL REWARDS](McDuff_Kapoor.pdf)
 ### Daniel McDuff and Ashish Kapoor
-
-[VISCERAL MACHINES: RISK-AVERSION IN REINFORCEMENT LEARNING WITH INTRINSIC PHYSIOLOGICAL REWARDS](McDuff_Kapoor.pdf)
 
 ### Authors
 
