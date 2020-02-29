@@ -16,6 +16,16 @@ This folder contains research related to the use of reinforcement learning in re
 
 ---
 
+The body's autonomic nervous system offers a feedback mechanism for the possible consequences of action choices.  For example, people may become nervous when driving fast around a bend, or when they are near a cliff edge.  These physiological changes are meant to protect oneself from danger.  
+
+This paper uses a novel approach to reinforcement learning that leverages a task-independent intrinsic reward function trained on peripheral pulse measurements that are correlated with human autonomic nervous system responses.
+
+The hypothesis is that these reward functions can improve sample efficiency and mitigate the challenges associated with sparse and skewed rewards in reinforcement learning.
+
+The hypothesis is tested in a simulated driving environment.  
+
+The results show that the reward function used in the simulated driving environment can increase the speed of learning and reduce the number of collisions during the learning stage.
+
 ### HEADER 1
 
 ### HEADER 2
