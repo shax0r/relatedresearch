@@ -12,7 +12,7 @@ This folder contains research related to the use of reinforcement learning in re
 
 [Daniel McDuff](https://www.microsoft.com/en-us/research/people/damcduff/) - Researcher at Microsoft
 
-[Ashish Kapoor](https://www.microsoft.com/en-us/research/people/akapoor/)[Google Scholar](https://scholar.google.com/citations?user=4D1n8scAAAAJ&hl=en) - Senior Principal Research Manager, Aerial Informatics and Robotics Group (AIR) at Microsoft Research Redmond, WA
+[Ashish Kapoor](https://www.microsoft.com/en-us/research/people/akapoor/)[[Google Scholar]](https://scholar.google.com/citations?user=4D1n8scAAAAJ&hl=en) - Senior Principal Research Manager, Aerial Informatics and Robotics Group (AIR) at Microsoft Research Redmond, WA
 
 ---
 
