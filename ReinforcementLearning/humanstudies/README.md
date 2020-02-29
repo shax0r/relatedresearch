@@ -17,6 +17,7 @@ This folder contains research related to the use of reinforcement learning in re
 ---
 
 ### HEADER 1
+
 ### HEADER 2
 
 > QUOTE
