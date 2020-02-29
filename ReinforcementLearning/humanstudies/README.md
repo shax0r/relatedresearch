@@ -40,10 +40,14 @@ As such, the signals of the human SNS can be used to model reward mechanisms.  P
 
 > We present a novel approach to reinforcement learning that leverages an artificial network trained on physiological signals correlated with autonomic nervous system responses.
 
-### HEADER 3
+The present study trains an artificial network based on the physiological signals associated with SNS responses in a simulated driving paradigm.  The main challenges of this type of work are a large amount of training data required and the high cost associated with failure cases (e.g., bad accidents that can be expensive to recover from and fatal).  
+
+> While much of the work in RL focuses on mechanisms that are task or goal dependent, it is clear that humans also consider the feedback from the body’s nervous system for action selection. For example, increased arousal can help signal imminent danger or failure to achieve a goal. Such mechanisms in an RL agent could help reduce the sample complexity as the rewards are continually available and could signal success or failure before the end of the episode. Furthermore, these visceral signals provide a warning mechanism that in turn could lead to safer explorations.
+
+Many data points are needed because it is difficult to determine which specific action from a sequence was responsible for a success or failure.  When rewards are sparse, this can make reinforcement learning modeling even more difficult.
 
 ### HEADER 4
 
 ### Results and Discussion
 
-### How this research relates to Emergent
+This paper presents a new approach to learning in which the reward function is supplemented with a model directly learned from the human sympathetic nervous system.  The model is incorporated into a reinforcement learning paradigm, and the results indicate that the model can improve both safety and efficiency of learning.  Such a function trained on physiological data can improve learning and reduce dangerous failures that could occur during training.
